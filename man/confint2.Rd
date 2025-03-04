@@ -2,19 +2,19 @@
 % Please edit documentation in R/confint2.R
 \name{confint2}
 \alias{confint2}
-\alias{confint2.lme}
-\alias{confint2.gls}
-\alias{confint2.intervals.lme}
-\alias{confint2.intervals.gls}
+\alias{confint_.lme}
+\alias{confint_.gls}
+\alias{confint_.intervals.lme}
+\alias{confint_.intervals.gls}
 \title{confint2}
 \usage{
-confint2.lme(x, level = 0.95, ...)
+confint_.lme(x, level = 0.95, ...)
 
-confint2.gls(x, level = 0.95, ...)
+confint_.gls(x, level = 0.95, ...)
 
-confint2.intervals.lme(x, ...)
+confint_.intervals.lme(x, ...)
 
-confint2.intervals.gls(x, ...)
+confint_.intervals.gls(x, ...)
 }
 \arguments{
 \item{x}{..}
@@ -27,6 +27,6 @@ confint2.intervals.gls(x, ...)
 confint2
 }
 \examples{
-ortho1 |> confint2.lme()
-ovary1 |> confint2.gls()
+ortho1 |> confint_.lme()
+ovary1 |> confint_.gls()
 }
