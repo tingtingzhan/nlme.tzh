@@ -17,16 +17,21 @@ confint_.intervals.lme(x, ...)
 confint_.intervals.gls(x, ...)
 }
 \arguments{
-\item{x}{..}
+\item{x}{\link[nlme]{gls} or \link[nlme]{lme} object}
 
-\item{level}{..}
+\item{level}{\link[base]{numeric} scalar, default \code{.95}}
 
-\item{...}{..}
+\item{...}{additional parameters of function \link[nlme]{intervals}}
+}
+\value{
+Functions \link{confint_.lme} and \link{confint_.gls} return a \link[base]{matrix} with additional attributes
+\code{'conf.level'}.
 }
 \description{
 confint_
 }
 \examples{
 ortho1 |> confint_.lme()
+ortho2 |> confint_.lme()
 ovary1 |> confint_.gls()
 }

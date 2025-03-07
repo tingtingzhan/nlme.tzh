@@ -1,20 +1,25 @@
 
 #' @title confint_
 #' 
-#' @param x ..
+#' @param x \link[nlme]{gls} or \link[nlme]{lme} object
 #' 
-#' @param level ..
+#' @param level \link[base]{numeric} scalar, default `.95`
 #' 
-#' @param ... ..
+#' @param ... additional parameters of function \link[nlme]{intervals}
+#' 
+#' @returns
+#' Functions [confint_.lme] and [confint_.gls] return a \link[base]{matrix} with additional attributes 
+#' `'conf.level'`.
 #' 
 #' @examples
 #' ortho1 |> confint_.lme()
+#' ortho2 |> confint_.lme()
 #' ovary1 |> confint_.gls()
 #' @name confint_nlme
 #' @importFrom nlme intervals
 #' @export
 confint_.lme <- function(x, level = .95, ...) {
-  intervals(object = x, level = level, ...) |> 
+  intervals(object = x, level = level, which = 'fixed', ...) |> # ?nlme:::intervals.lme
     confint_.intervals.lme()
 }
 
@@ -22,7 +27,7 @@ confint_.lme <- function(x, level = .95, ...) {
 #' @importFrom nlme intervals
 #' @export
 confint_.gls <- function(x, level = .95, ...) {
-  intervals(object = x, level = level, ...) |> 
+  intervals(object = x, level = level, which = 'coef', ...) |> # ?nlme:::intervals.gls
     confint_.intervals.gls()
 }
 
