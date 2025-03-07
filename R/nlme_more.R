@@ -1,38 +1,5 @@
 
 
-#' @title \link[stats]{model.frame} of \link[nlme]{gls} and \link[nlme]{lme} Objects
-#' 
-#' @description ..
-#' 
-#' @param formula \link[nlme]{gls} or \link[nlme]{lme} object
-#' 
-#' @param data ..
-#' 
-#' @param ... additional parameters of \link[stats]{model.frame.default}
-#' 
-#' @details
-#' If not define, dispatch to \link[stats]{model.frame.default} and 
-#' get `$modelStruct` (no `$model` element).
-#' 
-#' @name model_frame_nlme
-#' @importFrom nlme getData
-#' @importFrom stats model.frame.default
-#' @method model.frame lme
-#' @export model.frame.lme
-#' @export
-model.frame.lme <- function(formula, data = getData(formula), ...) {
-  # ?nlme:::getData.lme and # ?nlme:::getData.gls
-  model.frame.default(formula(formula), data = data, ...)
-}
-
-#' @rdname model_frame_nlme
-#' @method model.frame gls
-#' @export model.frame.gls
-#' @export
-model.frame.gls <- model.frame.lme
-
-
-
 
 
 #' @title Fixed Effect of \link[nlme]{lme} Object
@@ -46,13 +13,6 @@ model.frame.gls <- model.frame.lme
 #'  
 #' @export
 coef0.lme <- function(x) x$coefficients$fixed
-
-
-
-
-
-
-
 
 
 
