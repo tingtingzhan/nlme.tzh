@@ -2,16 +2,10 @@
 % Please edit documentation in R/pval.R
 \name{pval_nlme}
 \alias{pval_nlme}
-\alias{.pval.gls}
-\alias{.pval.lme}
 \alias{.pval.summary.lme}
 \alias{.pval.summary.gls}
 \title{Get \eqn{p}-values from \link[nlme]{lme} and \link[nlme]{gls} Objects}
 \usage{
-.pval.gls(x)
-
-.pval.lme(x)
-
 .pval.summary.lme(x)
 
 .pval.summary.gls(x)
@@ -21,9 +15,4 @@
 }
 \description{
 Get \eqn{p}-values from \link[nlme]{lme} and \link[nlme]{gls} Objects
-}
-\examples{
-.pval.lme(ortho1)
-.pval.gls(ovary1)
-
 }
