@@ -16,63 +16,6 @@ coef0.lme <- function(x) x$coefficients$fixed
 
 
 
-#' @title Sprintf.lme
-#' 
-#' @description ..
-#' 
-#' @param x \link[nlme]{lme} object or \link[nlme]{gls} object
-#' 
-#' @examples
-#' Sprintf.lme(ortho1)
-#' 
-#' @name Sprintf_lme_gls
-#' @importFrom stats formula
-#' @export Sprintf.lme
-#' @export
-Sprintf.lme <- function(x) {
-  fom <- formula(x) # ?nlme:::formula.lme
-  # no variable selection for 'lme' yet
-  old_terms <- x$old_terms %||% fom # R 4.4.0
-  xvar <- unique.default(all.vars(old_terms[[3L]]))
-  
-  sprintf(
-    fmt = 'The relationship between **`%s`** and %s is analyzed based on %s by fitting a %svariable %s model using <u>**`R`**</u> package <u>**`nlme`**</u>.', 
-    deparse1(fom[[2L]]),
-    paste0('`', xvar, '`', collapse = ', '),
-    nobsText.lme(x),
-    if (length(xvar) > 1L) 'multi' else 'uni',
-    desc_.lme(x))
-}
-
-
-
-#' @rdname Sprintf_lme_gls
-#' @examples
-#' Sprintf.gls(ovary1)
-#' @importFrom stats formula
-#' @export Sprintf.gls
-#' @export
-Sprintf.gls <- function(x) {
-  fom <- formula(x) # ?nlme:::formula.gls
-  # no variable selection for 'gls' yet
-  old_terms <- x$old_terms %||% fom # R 4.4.0
-  xvar <- unique.default(all.vars(old_terms[[3L]]))
-  
-  sprintf(
-    fmt = 'The relationship between **`%s`** and %s is analyzed based on %s by fitting a %svariable %s model using <u>**`R`**</u> package <u>**`nlme`**</u>.', 
-    deparse1(fom[[2L]]),
-    paste0('`', xvar, '`', collapse = ', '),
-    nobsText.gls(x),
-    if (length(xvar) > 1L) 'multi' else 'uni', 
-    desc_.gls(x))
-}
-
-
-
-
-
-
-
 
 
 
@@ -80,7 +23,7 @@ Sprintf.gls <- function(x) {
 # 'glmmPQL' inherits from 'lme'
 # ggplot2::fortify has function(model, data, ...) 
 #' @importFrom nlme getData getGroupsFormula
-#' @importFrom stats predict
+#' @importFrom stats formula predict
 #' @export
 fortify.lme <- function(model, data = getData(model), level = 0L, ...) { # nlme:::getData.lme
   z <- if (inherits(model, what = 'glmmPQL')) {
@@ -118,6 +61,7 @@ fortify.lme <- function(model, data = getData(model), level = 0L, ...) { # nlme:
 #' # not written yet
 #'
 #' @importFrom nlme getData
+#' @importFrom stats formula
 #' @export
 autoplot.lme <- function(object, level = 0L, ...) {
   
