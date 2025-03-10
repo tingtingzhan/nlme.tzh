@@ -9,12 +9,12 @@
 #' @note
 #' We already have `nlme:::coef.lme`
 #' 
-#' Function [coef0.lme] is actually `nlme:::fixef.lme`.
+#' Function [coef_.lme] is actually `nlme:::fixef.lme`.
 #'  
 #' @export
-coef0.lme <- function(x) x$coefficients$fixed
+coef_.lme <- function(x) x$coefficients$fixed
 
-
+# ?nlme:::coef.gls is fine
 
 
 
