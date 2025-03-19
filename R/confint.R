@@ -12,9 +12,12 @@
 #' `'conf.level'`.
 #' 
 #' @examples
-#' ortho1 |> confint_.lme()
-#' ortho2 |> confint_.lme()
-#' ovary1 |> confint_.gls()
+#' library(nlme)
+#' lme(distance ~ age, data = Orthodont, keep.data = TRUE) |> confint_.lme()
+#' lme(fixed = distance ~ Sex * I(age-11), 
+#'   weights = varIdent(form = ~ 1 | Sex), data = Orthodont) |> confint_.lme()
+#' gls(follicles ~ sin(2*pi*Time) + cos(2*pi*Time), 
+#'   data = Ovary, correlation = corAR1(form = ~ 1 | Mare)) |> confint_.gls()
 #' @name confint_nlme
 #' @importFrom nlme intervals
 #' @export

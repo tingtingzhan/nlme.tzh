@@ -19,11 +19,14 @@
 #' @param ... ..
 #' 
 #' @examples
-#' # lme or gls model
-#' diagnose.lme(ortho1, lty = 2, id = .05, adj = -.4)
-#' diagnose.lme(ortho2)
-#' diagnose.lme(oxide1)
-#' # diagnose.gls(ovary1) # bug
+#' library(nlme)
+#' lme(distance ~ age, data = Orthodont, keep.data = TRUE) |> 
+#'  diagnose.lme(lty = 2, id = .05, adj = -.4)
+#' lme(fixed = distance ~ Sex * I(age-11), 
+#'  weights = varIdent(form = ~ 1 | Sex), data = Orthodont) |> diagnose.lme()
+#' lme(Thickness ~ 1, data = Oxide) |> diagnose.lme()
+#' # gls(follicles ~ sin(2*pi*Time) + cos(2*pi*Time), 
+#' #  data = Ovary, correlation = corAR1(form = ~ 1 | Mare)) |> diagnose.gls() # bug
 #' 
 #' @importFrom grDevices dev.hold dev.flush devAskNewPage
 #' @importFrom graphics pairs
