@@ -24,7 +24,7 @@ autoplot.groupedData <- function(object, ...) {
 
 
 
-
+#' @importFrom rlang .data
 #' @export
 autolayer.groupedData <- function(object, ...) {
   
@@ -41,13 +41,14 @@ autolayer.groupedData <- function(object, ...) {
   mp <- if (length(otfom)) {
     ot <- otfom[[2L]]
     if (is.symbol(ot)) {
-      eval(call(name = 'aes', x = x, y = y, group = id, colour = ot))
+      aes(x = .data[[x]], y = .data[[y]], group = eval(id, .data), colour = .data[[ot]])
     } else if ((ot[[1L]] == '+') && is.symbol(ot1 <- ot[[2L]]) && is.symbol(ot2 <- ot[[3L]])) {
       # `ot` is `a + b`
-      eval(call(name = 'aes', x = x, y = y, group = id, colour = ot1, linetype = ot2))
+      aes(x = .data[[x]], y = .data[[y]], group = eval(id, .data), colour = .data[[ot1]], linetype = .data[[ot2]])
     } else if ((ot[[1L]] == '+') && is.symbol(ot2 <- ot[[3L]]) && 
                (ot[[2L]][[1L]] == '+') && is.symbol(ot3 <- ot[[2L]][[3L]])) {
       # `ot` is `a + b + c`
+      # not sure if rlang::.data works..
       eval(call(name = 'aes', x = x, y = y, group = id, colour = ot2, linetype = ot3))
     } else return(invisible())
   } else eval(call(name = 'aes', x = x, y = y, group = id))
