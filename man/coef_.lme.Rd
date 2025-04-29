@@ -15,5 +15,5 @@ Fixed Effect of \link[nlme]{lme} Object
 \note{
 We already have \code{nlme:::coef.lme}
 
-Function \link{coef_.lme} is actually \code{nlme:::fixef.lme}.
+Function \code{\link[=coef_.lme]{coef_.lme()}} is actually \code{nlme:::fixef.lme}.
 }

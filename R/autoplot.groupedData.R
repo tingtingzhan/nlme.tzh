@@ -9,6 +9,7 @@
 #' @param ... ..
 #' 
 #' @examples 
+#' library(ggplot2)
 #' autoplot(Indometh)
 #' autoplot(Loblolly)
 #' autoplot(ChickWeight) # Chick and Diet already factor

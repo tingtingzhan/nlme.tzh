@@ -9,7 +9,7 @@
 #' @note
 #' We already have `nlme:::coef.lme`
 #' 
-#' Function [coef_.lme] is actually `nlme:::fixef.lme`.
+#' Function [coef_.lme()] is actually `nlme:::fixef.lme`.
 #'  
 #' @export
 coef_.lme <- function(x) x$coefficients$fixed
