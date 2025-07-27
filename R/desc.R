@@ -3,6 +3,7 @@
 #' 
 #' @param x \link[nlme]{lme} or \link[nlme]{gls} object
 #' 
+#' @keywords internal
 #' @name desc_nlme
 #' @export
 desc_.lme <- function(x) {
