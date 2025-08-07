@@ -10,8 +10,8 @@
 #' m2 = gls(follicles ~ sin(2*pi*Time) + cos(2*pi*Time), 
 #'   data = Ovary, correlation = corAR1(form = ~ 1 | Mare)) 
 #'   
-#' library(rmd.tzh); library(ecip)
-#' list('`lme`' = m1, '`gls`' = m2) |> render_(file = 'lme_gls')
+#' library(ecip)
+#' list('`lme`' = m1, '`gls`' = m2) |> rmd.tzh::render_(file = 'lme_gls')
 #' @keywords internal
 #' @name md_nlme
 #' @importFrom rmd.tzh md_
