@@ -6,9 +6,9 @@
 \alias{nobsText.gls}
 \title{nobsText}
 \usage{
-nobsText.lme(x)
+\method{nobsText}{lme}(x)
 
-nobsText.gls(x)
+\method{nobsText}{gls}(x)
 }
 \arguments{
 \item{x}{\link[nlme]{lme} or \link[nlme]{gls} object}
@@ -16,3 +16,4 @@ nobsText.gls(x)
 \description{
 nobsText
 }
+\keyword{internal}

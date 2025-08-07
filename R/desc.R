@@ -5,6 +5,8 @@
 #' 
 #' @keywords internal
 #' @name desc_nlme
+#' @importFrom ecip desc_
+#' @export desc_.lme
 #' @export
 desc_.lme <- function(x) {
   # from ?nlme:::print.lme

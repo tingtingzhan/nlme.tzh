@@ -13,13 +13,21 @@
 #' 
 #' @examples
 #' library(nlme)
-#' lme(distance ~ age, data = Orthodont, keep.data = TRUE) |> confint_.lme()
+#' m1 = lme(distance ~ age, data = Orthodont, keep.data = TRUE)
+#' m1 |> confint_.lme()
 #' lme(fixed = distance ~ Sex * I(age-11), 
 #'   weights = varIdent(form = ~ 1 | Sex), data = Orthodont) |> confint_.lme()
-#' gls(follicles ~ sin(2*pi*Time) + cos(2*pi*Time), 
-#'   data = Ovary, correlation = corAR1(form = ~ 1 | Mare)) |> confint_.gls()
+#' m2 = gls(follicles ~ sin(2*pi*Time) + cos(2*pi*Time), 
+#'   data = Ovary, correlation = corAR1(form = ~ 1 | Mare)) 
+#' m2 |> confint_.gls()
+#'   
+#' library(rmd.tzh); library(ecip)
+#' list('`lme`' = m1, '`gls`' = m2) |> render_(file = 'lme_gls')
 #' @name confint_nlme
+#' @keywords internal
 #' @importFrom nlme intervals
+#' @importFrom ecip confint_
+#' @export confint_.lme
 #' @export
 confint_.lme <- function(x, level = .95, ...) {
   intervals(object = x, level = level, which = 'fixed', ...) |> # ?nlme:::intervals.lme
@@ -28,6 +36,8 @@ confint_.lme <- function(x, level = .95, ...) {
 
 #' @rdname confint_nlme
 #' @importFrom nlme intervals
+#' @importFrom ecip confint_
+#' @export confint_.gls
 #' @export
 confint_.gls <- function(x, level = .95, ...) {
   intervals(object = x, level = level, which = 'coef', ...) |> # ?nlme:::intervals.gls
@@ -35,6 +45,9 @@ confint_.gls <- function(x, level = .95, ...) {
 }
 
 #' @rdname confint_nlme
+#' @importFrom ecip confint_
+#' @method confint_ intervals.lme
+#' @export confint_.intervals.lme
 #' @export
 confint_.intervals.lme <- function(x, ...) {
   ci <- x[['fixed']][, -2L, drop = FALSE] # three columns 'lower', 'est.', 'upper'
@@ -43,6 +56,9 @@ confint_.intervals.lme <- function(x, ...) {
 }
 
 #' @rdname confint_nlme
+#' @importFrom ecip confint_
+#' @method confint_ intervals.gls
+#' @export confint_.intervals.gls
 #' @export
 confint_.intervals.gls <- function(x, ...) {
   ci <- x[['coef']][, -2L, drop = FALSE] # three columns 'lower', 'est.', 'upper'

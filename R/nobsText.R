@@ -4,6 +4,9 @@
 #' @param x \link[nlme]{lme} or \link[nlme]{gls} object
 #' 
 #' @name nobsText_nlme
+#' @keywords internal
+#' @importFrom ecip nobsText
+#' @export nobsText.lme
 #' @export
 nobsText.lme <- function(x) {
   # ?nlme:::print.lme; 'Number of Groups'
@@ -15,6 +18,8 @@ nobsText.lme <- function(x) {
 
 
 #' @rdname nobsText_nlme
+#' @importFrom ecip nobsText
+#' @export nobsText.gls
 #' @export
 nobsText.gls <- function(x) {
   # what happens with nested groups ????

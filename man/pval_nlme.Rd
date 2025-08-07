@@ -6,9 +6,9 @@
 \alias{.pval.summary.gls}
 \title{Get \eqn{p}-values from \link[nlme]{lme} and \link[nlme]{gls} Objects}
 \usage{
-.pval.summary.lme(x)
+\method{.pval}{summary.lme}(x)
 
-.pval.summary.gls(x)
+\method{.pval}{summary.gls}(x)
 }
 \arguments{
 \item{x}{\link[nlme]{lme} or \link[nlme]{gls} object}
@@ -16,3 +16,4 @@
 \description{
 Get \eqn{p}-values from \link[nlme]{lme} and \link[nlme]{gls} Objects
 }
+\keyword{internal}

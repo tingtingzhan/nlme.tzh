@@ -6,9 +6,9 @@
 \alias{desc_.gls}
 \title{Model Description}
 \usage{
-desc_.lme(x)
+\method{desc_}{lme}(x)
 
-desc_.gls(x)
+\method{desc_}{gls}(x)
 }
 \arguments{
 \item{x}{\link[nlme]{lme} or \link[nlme]{gls} object}

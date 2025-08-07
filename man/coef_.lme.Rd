@@ -4,7 +4,7 @@
 \alias{coef_.lme}
 \title{Fixed Effect of \link[nlme]{lme} Object}
 \usage{
-coef_.lme(x)
+\method{coef_}{lme}(x)
 }
 \arguments{
 \item{x}{\link[nlme]{lme} or \link[nlme]{gls} object}
@@ -17,3 +17,4 @@ We already have \code{nlme:::coef.lme}
 
 Function \code{\link[=coef_.lme]{coef_.lme()}} is actually \code{nlme:::fixef.lme}.
 }
+\keyword{internal}

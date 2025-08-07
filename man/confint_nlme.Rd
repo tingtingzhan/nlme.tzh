@@ -8,13 +8,13 @@
 \alias{confint_.intervals.gls}
 \title{confint_}
 \usage{
-confint_.lme(x, level = 0.95, ...)
+\method{confint_}{lme}(x, level = 0.95, ...)
 
-confint_.gls(x, level = 0.95, ...)
+\method{confint_}{gls}(x, level = 0.95, ...)
 
-confint_.intervals.lme(x, ...)
+\method{confint_}{intervals.lme}(x, ...)
 
-confint_.intervals.gls(x, ...)
+\method{confint_}{intervals.gls}(x, ...)
 }
 \arguments{
 \item{x}{\link[nlme]{gls} or \link[nlme]{lme} object}
@@ -32,9 +32,15 @@ confint_
 }
 \examples{
 library(nlme)
-lme(distance ~ age, data = Orthodont, keep.data = TRUE) |> confint_.lme()
+m1 = lme(distance ~ age, data = Orthodont, keep.data = TRUE)
+m1 |> confint_.lme()
 lme(fixed = distance ~ Sex * I(age-11), 
   weights = varIdent(form = ~ 1 | Sex), data = Orthodont) |> confint_.lme()
-gls(follicles ~ sin(2*pi*Time) + cos(2*pi*Time), 
-  data = Ovary, correlation = corAR1(form = ~ 1 | Mare)) |> confint_.gls()
+m2 = gls(follicles ~ sin(2*pi*Time) + cos(2*pi*Time), 
+  data = Ovary, correlation = corAR1(form = ~ 1 | Mare)) 
+m2 |> confint_.gls()
+  
+library(rmd.tzh); library(ecip)
+list('`lme`' = m1, '`gls`' = m2) |> render_(file = 'lme_gls')
 }
+\keyword{internal}
