@@ -13,4 +13,4 @@ RoxygenNote: 7.3.3
 Encoding: UTF-8
 License: GPL-2
 Depends: R (>= 4.5), nlme (== 3.1.168)
-Imports: ggplot2 (== 4.0.0), rlang, rmd.tzh, ecip
+Imports: ggplot2 (== 4.0.1), rlang, rmd.tzh, ecip
