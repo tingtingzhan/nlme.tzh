@@ -23,6 +23,6 @@ m2 = gls(follicles ~ sin(2*pi*Time) + cos(2*pi*Time),
   data = Ovary, correlation = corAR1(form = ~ 1 | Mare)) 
   
 library(ecip)
-list('`lme`' = m1, '`gls`' = m2) |> rmd.tzh::render_(file = 'lme_gls')
+list('`lme`' = m1, '`gls`' = m2) |> fastmd::render_(file = 'lme_gls')
 }
 \keyword{internal}
