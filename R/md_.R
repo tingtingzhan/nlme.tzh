@@ -11,7 +11,7 @@
 #'   data = Ovary, correlation = corAR1(form = ~ 1 | Mare)) 
 #'   
 #' library(ecip)
-#' list('`lme`' = m1, '`gls`' = m2) |> fastmd::render2html(file = 'lme_gls')
+#' list('`lme`' = m1, '`gls`' = m2) |> fastmd::render2html()
 #' @keywords internal
 #' @name md_nlme
 #' @importFrom fastmd md_
