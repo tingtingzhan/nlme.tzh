@@ -15,6 +15,13 @@
 #' library(nlme)
 #' lme(fixed = distance ~ Sex * I(age-11), 
 #'   weights = varIdent(form = ~ 1 | Sex), data = Orthodont) |> confint_.lme()
+#' 
+#' m1 = lme(distance ~ age, data = Orthodont, keep.data = TRUE)
+#' m2 = gls(follicles ~ sin(2*pi*Time) + cos(2*pi*Time), 
+#'   data = Ovary, correlation = corAR1(form = ~ 1 | Mare)) 
+#'   
+#' library(ecip)
+#' list('`lme`' = m1, '`gls`' = m2) |> fastmd::render2html()
 #' @name confint_nlme
 #' @keywords internal
 #' @importFrom nlme intervals
